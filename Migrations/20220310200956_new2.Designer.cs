@@ -3,14 +3,16 @@ using System;
 using Bookstore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bookstore.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    partial class BookstoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220310200956_new2")]
+    partial class new2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,44 +81,6 @@ namespace Bookstore.Migrations
                     b.HasKey("BookID");
 
                     b.ToTable("Books");
-
-                    b.HasData(
-                        new
-                        {
-                            BookID = 1,
-                            Author = "JK Rowling",
-                            Category = "Fantasy",
-                            Classification = "Action",
-                            ISBN = "0590353403",
-                            PageCount = 145,
-                            Price = 20.010000000000002,
-                            Publisher = "Commonhouse Publishing",
-                            Title = "Harry Potter and the Sorcerers Stone"
-                        },
-                        new
-                        {
-                            BookID = 2,
-                            Author = "JK Rowling",
-                            Category = "Fantasy +",
-                            Classification = "Action",
-                            ISBN = "0590353405",
-                            PageCount = 145,
-                            Price = 20.010000000000002,
-                            Publisher = "Commonhouse Publishing",
-                            Title = "Harry Potter and the Twlilight Princess"
-                        },
-                        new
-                        {
-                            BookID = 3,
-                            Author = "Trashy Bashy",
-                            Category = "Romance",
-                            Classification = "Romance",
-                            ISBN = "0570353405",
-                            PageCount = 1,
-                            Price = 300.44999999999999,
-                            Publisher = "Strangehouse Publishing",
-                            Title = "50 Shades of Trash"
-                        });
                 });
 
             modelBuilder.Entity("Bookstore.Models.Purchase", b =>

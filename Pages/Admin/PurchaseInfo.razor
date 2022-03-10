@@ -3,11 +3,11 @@
 @*<h3>PurchaseInfo</h3>*@
 
 @*now we will pass in all the paramters the table is looking for*@
-<PurchaseTable TableTitle="Uncollected Purchases" Purchases="UncollectedPurchases" ButtonLabel="Puchased" PurchaseSelected="ResetPurchase">
+<PurchaseTable TableTitle="Not Shipped Purchases" Purchases="UncollectedPurchases" ButtonLabel="Puchased" PurchaseSelected="ResetPurchase">
 </PurchaseTable>
 
 @*Ok now be be building our second button to "reset" the donation*@
-<PurchaseTable TableTitle="Collected Purchases" Purchases="CollectedPurchases" ButtonLabel="Reset" PurchaseSelected="CollectPurchase"></PurchaseTable>
+<PurchaseTable TableTitle="Shipped Purchases" Purchases="CollectedPurchases" ButtonLabel="Reset" PurchaseSelected="CollectPurchase"></PurchaseTable>
 
 @*button to refresh page/data*@
 <button class="btn btn-info" @onclick="@(x => UpdateData())">Refresh Data</button>
