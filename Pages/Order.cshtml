@@ -1,0 +1,52 @@
+﻿@page
+@model Bookstore.Pages.IndexModel
+@{
+}
+
+<h2>Your shopping cart</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var i in Model.basket.Items)
+            {
+                <tr>
+                    <td>@i.Bookstores.Title</td>
+                    <td>@i.Quantity</td>
+                    <td>@i.Bookstores.Price</td>
+                     @*print out subtotal for just the singular line item*@
+                    <td>@((i.Quantity * (i.Bookstores.Price)).ToString("c"))</td>
+
+                    @*add a delete button*@
+                    <td class="text-center">
+                        <form method="post" asp-page-handler="Remove">
+                            <input type="hidden" name="bookID" value="@i.Bookstores.BookID" />
+                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+    </tbody>
+    @*print out total for all line items*@
+    <tfoot>
+        <tr>
+            <td colspan="3">Total: </td>
+            <td>@Model.basket.CalculateTotal().ToString("c")</td>
+        </tr>
+        
+    </tfoot>
+</table>
+
+<div>
+    <a class="btn btn-primary" href="@Model.ReturnUrl"> Continue Perusing </a>
+    <a class="btn btn-primary" asp-action="Checkout" asp-controller="Purchase">Checkout</a>
+</div>
