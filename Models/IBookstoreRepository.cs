@@ -9,6 +9,9 @@ namespace Bookstore.Models
     {
         IQueryable<Bookstores> Books { get; }
 
+        public void SaveBook(Bookstores p);
+        public void CreateBook(Bookstores p);
+        public void DeleteBook(Bookstores p);
     }
 
 }
