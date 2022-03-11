@@ -6,8 +6,8 @@
 
 <div class="container-fluid">
     @*using grid system here!*@
-    <div class="row p-2">
-        <div class="col-3 d-grid">
+    <div class="row p-2" d-grid>
+        <div class="col-3 ">
             @*we aren't going to use a tags in a blazer setup, but NavLinks*@
             <NavLink class="btn btn-outline-primary" href="/admin/Books" 
                      ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Books</NavLink>
@@ -15,6 +15,8 @@
             @*Both links should match the other two razor page paths defined within the admin folder*@
             <NavLink class="btn btn-primary" href="/admin/PurchaseInfo"
                     ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Purchase Info</NavLink>
+            <NavLink class="btn btn-primary" href="/admin/Books/create"
+                     ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Add New Book</NavLink>
         </div>
         <div class="col">
             @Body

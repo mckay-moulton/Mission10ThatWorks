@@ -62,7 +62,7 @@
     //now we need to add the functions we created buttons for
 
     public string GetDetailsUrl(long id) => $"/admin/Books/details/{id}";
-    public string GetEditUrl(long id) => $"/admin/Books/edit{id}";
+    public string GetEditUrl(long id) => $"/admin/Books/edit/{id}";
 
     public async Task DeleteBook (Bookstores b)
     {
