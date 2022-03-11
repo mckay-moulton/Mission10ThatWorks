@@ -15,8 +15,11 @@
         <tr><th>Page Count</th><td>@b.PageCount</td></tr>
         <tr><th>Price</th><td>@b.Price</td></tr>
     </tbody>
-
 </table>
+
+<NavLink class="btn-block btn-warning" href="@EditUrl">Edit</NavLink>
+@*return users to previous view/page*@
+<NavLink class="btn btn-secondary" href="/admin/Books">Back</NavLink>
 
 @code {
 
@@ -30,4 +33,5 @@
     {
         b = repo.Books.FirstOrDefault(x => x.BookID == ID);
     }
+    public string EditUrl => $"/admin/Books/edit/{b.BookID}";
 }
