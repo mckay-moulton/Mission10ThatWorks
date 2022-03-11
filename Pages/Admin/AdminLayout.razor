@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="bg-info text-white p-2">
-    <span class="navbar-brand m-lg-2">Bookstore Project Administration</span>
+<div class="bg-info text-white p-2 text-uppercase text-center">
+    <span class="navbar-brand m-lg-2 text-monospace text-black-50 text-center" >Bookstore Project Administration</span>
 </div>
 
 <div class="container-fluid">
@@ -18,7 +18,7 @@
             <NavLink class="btn btn-primary" href="/admin/Books/create"
                      ActiveClass="btn-primary text-white" Match="NavLinkMatch.Prefix">Add New Book</NavLink>
         </div>
-        <div class="col">
+        <div class="col justify-content-lg-between">
             @Body
         </div>
     </div>

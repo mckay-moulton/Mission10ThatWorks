@@ -2,15 +2,16 @@
 @inherits OwningComponentBase<IPurchaseRepository>
 @*<h3>Purchases/Shipped Status</h3>*@
 
-@*now we will pass in all the paramters the table is looking for*@
-<PurchaseTable TableTitle="Not Shipped Purchases" Purchases="NotShippedPurchases" ButtonLabel="Ship It" PurchaseSelected="CollectPurchase">
-</PurchaseTable>
-
+<div class=" text-justify" style="background-color: bisque">
+    @*now we will pass in all the paramters the table is looking for*@
+    <PurchaseTable TableTitle="Not Shipped Orders" Purchases="NotShippedPurchases" ButtonLabel="Mark as Shipped" PurchaseSelected="CollectPurchase">
+    </PurchaseTable>
+</div>
 @*Ok now be be building our second button to "reset" the donation*@
 <PurchaseTable TableTitle="Shipped Orders" Purchases="ShippedPurchases" ButtonLabel="Reset Shipped Status" PurchaseSelected="ResetPurchase"></PurchaseTable>
 
 @*button to refresh page/data*@
-<button class="btn btn-info" @onclick="@(x => UpdateData())">Refresh Data</button>
+<button class="btn btn-outline-success" @onclick="@(x => UpdateData())">Refresh Data</button>
 
 @code {
     public IPurchaseRepository repo => Service;
