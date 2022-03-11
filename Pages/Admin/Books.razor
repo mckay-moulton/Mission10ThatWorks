@@ -8,31 +8,44 @@
     <thead>
         @*set up table headers*@
         <tr>
+            <th>BookID</th>
             <th>Book Name</th>
             <th>Author</th>
         </tr>
     </thead>
     @*now for the table content*@
-<thbody>
+<tbody>
     @if (BookData?.Count() > 0)
     {
         //List Books
         @foreach (Bookstores b in BookData)
         {
-         <tr>
-            <th>@b.Title</th>
-            <th>@b.Author</th>
-        </tr>
+    <tr>
+        <td>@b.BookID</td>
+        <td>@b.Title</td>
+        <td>@b.Author</td>
+
+        @*//add buttons*@
+        <td>
+            <NavLink class="btn btn-info btn-sm" href="@GetDetailsUrl(b.BookID)">Details</NavLink>
+        </td>
+
+        <td>
+            <NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(b.BookID)">Edit</NavLink>
+        </td>
+        <td>
+            <NavLink class="btn btn-danger btn-sm" @onclick="@(x => DeleteBook(b))">Delete</NavLink>
+        </td>
+    </tr>
         }
     }
     else
     {
         <tr>
             <td colspan="5" class="text-center">There Are No Books</td>
-
         </tr>
     }
-</thbody>
+</tbody>
 </table>
 
 @code {
@@ -46,4 +59,15 @@
     {
         BookData = await repo.Books.ToListAsync();
     }
+    //now we need to add the functions we created buttons for
+
+    public string GetDetailsUrl(long id) => $"/admin/Books/details/{id}";
+    public string GetEditUrl(long id) => $"/admin/Books/edit{id}";
+
+    public async Task DeleteBook (Bookstores b)
+    {
+        repo.DeleteBook(b);
+        await UpdateDate();
+    }
 }
+
