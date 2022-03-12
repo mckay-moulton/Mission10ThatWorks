@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = null;
 }
+
+@model LoginModel
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Bookstore Login</title>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div class="bg-dark text-white p-2">
+            <span class="navbar-brand m-1-2">Bookstore Project</span>
+        </div>
+        
+        <div class="text-danger" asp-validation-summary="All"></div>
+        <form method="post" asp-controller="Account" asp-action="Login">
+
+            <div class="Form-group">
+                <label asp-for="Username">User Name: </label>
+                <input asp-for="Username" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password: </label>
+                <input asp-for="Password" class="form-control" type="password"/>
+            </div>
+            <button class="btn btn-primary" type="submit">Log In</button>
+            @*this button will verify their access, then route them to the url they requested through the Home Controller*@
+            <input type="hidden" asp-for="ReturnUrl" />
+        </form>
+    </body>
+    </html>

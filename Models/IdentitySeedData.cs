@@ -12,7 +12,7 @@ namespace Bookstore.Models
     public static class IdentitySeedData
     {
         private const string adminUser = "Admin";
-        private const string adminPassword = "PAssword23456!";
+        private const string adminPassword = "413ExtraYeetPeriod(t)!";
 
         public static async void EnsurePopulated (IApplicationBuilder app)
         {
@@ -25,7 +25,8 @@ namespace Bookstore.Models
             }
 
             UserManager<IdentityUser> userManager = app.ApplicationServices
-                 .CreateScope().ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                 .CreateScope().ServiceProvider
+                 .GetRequiredService<UserManager<IdentityUser>>();
             
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
             if (user ==null)
@@ -33,7 +34,7 @@ namespace Bookstore.Models
                 user = new IdentityUser(adminUser);
 
                 user.Email = "admin@yeet.com";
-                user.PhoneNumber = "555-12345";
+                user.PhoneNumber = "555-1235";
 
                 //this will create a new entry in the database with the parameters password as username
                 await userManager.CreateAsync(user, adminPassword);

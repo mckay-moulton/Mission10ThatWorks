@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bookstore.Models.ViewModels
 {
-    public class LoginModels
+    public class LoginModel
     {
         [Required]
         public string Username { get; set; }

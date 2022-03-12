@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Bookstore.Migrations.AppIdentityDB
+namespace Bookstore.Migrations
 {
-    public partial class Identity1 : Migration
+    public partial class Identity2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

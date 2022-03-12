@@ -1,7 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="bg-info text-white p-2 text-uppercase text-center">
-    <span class="navbar-brand m-lg-2 text-monospace text-black-50 text-center" >Bookstore Project Administration</span>
+<div class="bg-info text-hite p-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <span class="navbar-brand m-lg-2 text-monospace text-black-50 text-center">Bookstore Project Administration</span>
+            </div>
+            @*add logout button*@
+            <div class="col-2 text-right">
+                <a class="btn btn-sm btn-primary" href="/account/logout">Log Out</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="container-fluid">
