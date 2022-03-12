@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +34,13 @@ namespace Bookstore
             {
                 options.UseSqlite(Configuration["ConnectionStrings:BookstoreDBConnection"]);
             });
+            //Set up security db
+            services.AddDbContext<AppIdentityDBContext>(options =>
+            options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
+            //End of security db setup
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
             services.AddScoped<IPurchaseRepository, EFPurchaseRepository >();
@@ -65,9 +73,10 @@ namespace Bookstore
             //Corresponds to wwwroot folder
             app.UseStaticFiles();
             app.UseSession();
-
             app.UseRouting();
 
+            //adding middleware for Microsoft Identity purposes
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
